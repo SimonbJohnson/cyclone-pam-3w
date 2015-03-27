@@ -10,3 +10,7 @@
 .x-axis-label{
     font-size:0.8em;
 }
+
+.dc-chart g.selected path {
+    stroke-width:1px !important;
+}

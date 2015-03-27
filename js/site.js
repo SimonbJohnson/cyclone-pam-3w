@@ -2,7 +2,7 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Who is doing what and where is the cyclone Pam response.</p><p>Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a> - <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>Source</a></p>",
+    description:"<p>Who is doing what and where is the cyclone Pam response.  Click the graphs or map to interact.</p><p>Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a> - <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>Source</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
