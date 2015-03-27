@@ -1,0 +1,20 @@
+var lookup = {
+"VUT0106003":"Aneityum",
+"VUT0106004":"Aniwa",
+"VUT0105037":"Buninga",
+"VUT0105005":"Efate",
+"VUT0105006":"Emae",
+"VUT0105039":"Emau",
+"VUT0106008":"Erromango",
+"VUT0106009":"Fortuna",
+"VUT0106009":"Lelepa",
+"VUT0105015":"Makira",
+"VUT0105018":"Mataso - Matah Alam",
+"VUT0105065":"Moso",
+"VUT0105068":"Nguna",
+"VUT0104021":"Paama",
+"VUT0105070":"Pele",
+"VUT0106023":"Tanna",
+"VUT0105083":"Tongariki",
+"VUT0105026":"Tongoa"
+};
