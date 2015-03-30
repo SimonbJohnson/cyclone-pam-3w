@@ -16,7 +16,7 @@
 }
 
 #hdx-3W-where {
-    height:480px;
+    height:470px;
     min-width:400px;
 }
 
@@ -33,5 +33,13 @@
 }
 
 #header{
+    padding-bottom:20px;
+    border-bottom-color: #dddddd;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    margin-bottom:20px;
+}
+
+.container{
     padding-bottom:20px;
 }

@@ -2,7 +2,7 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Click the graphs or map to interact.</p><p>Date: 25/03/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>MapAction</a></p>",
+    description:"<p>Click the graphs or map to interact.<br />Date: 25/03/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>MapAction</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
@@ -40,7 +40,7 @@ function generate3WComponent(config,data,geom){
     var statusGroup = statusDimension.group();
     var all = cf.groupAll();
 
-    whoChart.width($('#hdx-3W-who').width()).height(520)
+    whoChart.width($('#hdx-3W-who').width()).height(510)
             .dimension(whoDimension)
             .group(whoGroup)
             .elasticX(true)
