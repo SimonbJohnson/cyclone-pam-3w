@@ -50,7 +50,7 @@ function generate3WComponent(config,data,geom){
             .labelOffsetY(13)
             .colors(config.colors)
             .colorDomain([0,7])
-            .colorAccessor(function(d, i){return i%8;})
+            .colorAccessor(function(d, i){return 3;})
             .xAxis().ticks(5);
 
     whatChart.width($('#hdx-3W-what').width()).height(250)
@@ -63,7 +63,7 @@ function generate3WComponent(config,data,geom){
             .labelOffsetY(13)
             .colors(config.colors)
             .colorDomain([0,7])
-            .colorAccessor(function(d, i){return i%8;})
+            .colorAccessor(function(d, i){return 3;})
             .xAxis().ticks(5);
     
     statusChart.width($('#hdx-3W-status').width()).height(160)
@@ -76,7 +76,7 @@ function generate3WComponent(config,data,geom){
             .labelOffsetY(13)
             .colors(config.colors)
             .colorDomain([0,7])
-            .colorAccessor(function(d, i){return i%8;})
+            .colorAccessor(function(d, i){return 3;})
             .xAxis().ticks(5);    
 
     dc.dataCount('#count-info')
