@@ -14,3 +14,37 @@
 .dc-chart g.selected path {
     stroke-width:1px !important;
 }
+
+#hdx-3W-where {
+    height:470px;
+    min-width:400px;
+}
+
+.hdx-3w-viz{
+    width:100%;
+}
+
+#hdx-3w-who{
+    padding-right:40px;
+}
+
+#wheretitle{
+    padding-bottom:12px;
+}
+
+#header{
+    padding-bottom:20px;
+    border-bottom-color: #dddddd;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    margin-bottom:20px;
+}
+
+.container{
+    padding-bottom:20px;
+}
+
+#reset{
+    background-color:#03a9f4;
+    border-color:#03a9f4;
+}
