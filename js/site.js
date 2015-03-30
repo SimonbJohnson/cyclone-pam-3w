@@ -26,8 +26,8 @@ function generate3WComponent(config,data,geom){
 
     var whoChart = dc.rowChart('#hdx-3W-who');
     var whatChart = dc.rowChart('#hdx-3W-what');
-    //var whereChart = dc.geoChoroplethChart('#hdx-3W-where');
-    var whereChart = dc.leafletChoroplethChart('#hdx-3W-where');
+    var whereChart = dc.geoChoroplethChart('#hdx-3W-where');
+    //var whereChart = dc.leafletChoroplethChart('#hdx-3W-where');
 
     var cf = crossfilter(data);
 
@@ -44,10 +44,9 @@ function generate3WComponent(config,data,geom){
             .dimension(whoDimension)
             .group(whoGroup)
             .elasticX(true)
-            //.data(function(group) {
-            //    return group.top(15);
-            //})
-            //.top(15)
+            .data(function(group) {
+                return group.top(15);
+            })
             .labelOffsetY(13)
             .colors(config.colors)
             .colorDomain([0,7])
@@ -58,9 +57,9 @@ function generate3WComponent(config,data,geom){
             .dimension(whatDimension)
             .group(whatGroup)
             .elasticX(true)
-            //.data(function(group) {
-            //    return group.top(15);
-            //})
+            .data(function(group) {
+                return group.top(15);
+            })
             .labelOffsetY(13)
             .colors(config.colors)
             .colorDomain([0,7])
@@ -70,7 +69,7 @@ function generate3WComponent(config,data,geom){
     dc.dataCount('#count-info')
             .dimension(cf)
             .group(all);
-    /*
+
     whereChart.width($('#hxd-3W-where').width()).height(400)
             .dimension(whereDimension)
             .group(whereGroup)
@@ -90,8 +89,8 @@ function generate3WComponent(config,data,geom){
             .title(function(d){
                 return lookup[d.key];
             });
-            */
-           
+
+           /*
         whereChart.width($('#hxd-3W-where').width()).height(400)
             .dimension(whereDimension)
             .group(whereGroup)
@@ -110,7 +109,7 @@ function generate3WComponent(config,data,geom){
             .featureKeyAccessor(function(feature){
                 return feature.properties[config.joinAttribute];
             });            
-            
+            */
           //.mapOptions({..})       - set leaflet specific options to the map object; Default: Leaflet default options
           //.center([1.1,1.1])      - get or set initial location
           //.zoom(7)                - get or set initial zoom level
