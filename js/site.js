@@ -110,7 +110,7 @@ function generate3WComponent(config,data,geom){
         .attr('class', 'x-axis-label')
         .attr('text-anchor', 'middle')
         .attr('x', $('#hdx-3W-who').width()/2)
-        .attr('y', 520)
+        .attr('y', 510)
         .text('Activities');
 
     var g = d3.selectAll('#hdx-3W-what').select('svg').append('g');
