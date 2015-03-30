@@ -614,7 +614,6 @@ dc.leafletChoroplethChart = function (parent, chartGroup) {
     };
     
     function isSelectedGeo(d) {
-        console.log(_chart.hasFilter(d.key));
         return _chart.hasFilter(d.key);
     }    
 
@@ -626,7 +625,6 @@ dc.leafletChoroplethChart = function (parent, chartGroup) {
         options = JSON.parse(JSON.stringify(options));
         var v = _dataMap[_chart.featureKeyAccessor()(feature)];
         if (v && v.d) {
-            console.log(v.d);
             if (_chart.hasFilter()) {
                 if (isSelectedGeo(v.d)) {
                     options.fillColor = _chart.getColor(v.d.value, v.i);
