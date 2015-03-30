@@ -2,16 +2,14 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Who is doing what and where in the cyclone Pam response.  Click the graphs or map to interact.</p><p>Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a> - <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>Source</a></p>",
+    description:"<p>Click the graphs or map to interact.</p><p>Date: 25/03/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>MapAction</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
     whereFieldName:"adm2_code",
+    statusFieldName:"status",
     geo:"data/vanuatu.geojson",
     joinAttribute:"adm2code",
-    x:"172.3000",
-    y:"-19",
-    zoom:"5000",
     colors:['#81d4fa','#4fc3f7','#29b6f6','#03a9f4','#039be5','#0288d1','#0277bd','#01579b']
 };
 
@@ -26,26 +24,28 @@ function generate3WComponent(config,data,geom){
 
     var whoChart = dc.rowChart('#hdx-3W-who');
     var whatChart = dc.rowChart('#hdx-3W-what');
-    var whereChart = dc.geoChoroplethChart('#hdx-3W-where');
-    //var whereChart = dc.leafletChoroplethChart('#hdx-3W-where');
+    var whereChart = dc.leafletChoroplethChart('#hdx-3W-where');
+    var statusChart = dc.rowChart('#hdx-3W-status');
 
     var cf = crossfilter(data);
 
     var whoDimension = cf.dimension(function(d){ return d[config.whoFieldName]; });
     var whatDimension = cf.dimension(function(d){ return d[config.whatFieldName]; });
     var whereDimension = cf.dimension(function(d){ return d[config.whereFieldName]; });
+    var statusDimension = cf.dimension(function(d){ return d[config.statusFieldName]; });
 
     var whoGroup = whoDimension.group();
     var whatGroup = whatDimension.group();
     var whereGroup = whereDimension.group();
+    var statusGroup = statusDimension.group();
     var all = cf.groupAll();
 
-    whoChart.width($('#hxd-3W-who').width()).height(400)
+    whoChart.width($('#hdx-3W-who').width()).height(520)
             .dimension(whoDimension)
             .group(whoGroup)
             .elasticX(true)
             .data(function(group) {
-                return group.top(15);
+                return group.top(20);
             })
             .labelOffsetY(13)
             .colors(config.colors)
@@ -53,7 +53,7 @@ function generate3WComponent(config,data,geom){
             .colorAccessor(function(d, i){return i%8;})
             .xAxis().ticks(5);
 
-    whatChart.width($('#hxd-3W-what').width()).height(400)
+    whatChart.width($('#hdx-3W-what').width()).height(250)
             .dimension(whatDimension)
             .group(whatGroup)
             .elasticX(true)
@@ -65,6 +65,19 @@ function generate3WComponent(config,data,geom){
             .colorDomain([0,7])
             .colorAccessor(function(d, i){return i%8;})
             .xAxis().ticks(5);
+    
+    statusChart.width($('#hdx-3W-status').width()).height(160)
+            .dimension(statusDimension)
+            .group(statusGroup)
+            .elasticX(true)
+            .data(function(group) {
+                return group.top(15);
+            })    
+            .labelOffsetY(13)
+            .colors(config.colors)
+            .colorDomain([0,7])
+            .colorAccessor(function(d, i){return i%8;})
+            .xAxis().ticks(5);    
 
     dc.dataCount('#count-info')
             .dimension(cf)
@@ -73,31 +86,10 @@ function generate3WComponent(config,data,geom){
     whereChart.width($('#hxd-3W-where').width()).height(400)
             .dimension(whereDimension)
             .group(whereGroup)
-            .colors(['#DDDDDD', config.colors[3]])
-            .colorDomain([0, 1])
-            .colorAccessor(function (d) {
-                if(d>0){
-                    return 1;
-                } else {
-                    return 0;
-                }
-            })
-            .overlayGeoJson(geom.features, 'Regions', function (d) {
-                return d.properties[config.joinAttribute];
-            })
-            .projection(d3.geo.mercator().center([config.x,config.y]).scale(config.zoom))
-            .title(function(d){
-                return lookup[d.key];
-            });
-
-           /*
-        whereChart.width($('#hxd-3W-where').width()).height(400)
-            .dimension(whereDimension)
-            .group(whereGroup)
-            .center([42.69,25.42])
-            .zoom(7)    
+            .center([-17.050,168.3000])
+            .zoom(6)    
             .geojson(geom)
-            .colors(['#DDDDDD', config.colors[3]])
+            .colors(['#CCCCCC', config.colors[3]])
             .colorDomain([0, 1])
             .colorAccessor(function (d) {
                 if(d>0){
@@ -108,18 +100,7 @@ function generate3WComponent(config,data,geom){
             })           
             .featureKeyAccessor(function(feature){
                 return feature.properties[config.joinAttribute];
-            });            
-            */
-          //.mapOptions({..})       - set leaflet specific options to the map object; Default: Leaflet default options
-          //.center([1.1,1.1])      - get or set initial location
-          //.zoom(7)                - get or set initial zoom level
-          //.map()                  - get map object
-          //.geojson()              - geojson object describing the features
-          //.featureOptions()       - object or a function (feature) to set the options for each feature
-          //.featureKeyAccessor()   - function (feature) to return a feature property that would be compared to the group key; Defauft: feature.properties.key
-          //.popup()                - function (d,feature) to return the string or DOM content of a popup
-          //.renderPopup(true)      - set if popups should be shown; Default: true
-          //.brushOn(true)          - if the map would select datapoints; Default: true           
+            });                    
 
     dc.renderAll();
     
@@ -129,7 +110,7 @@ function generate3WComponent(config,data,geom){
         .attr('class', 'x-axis-label')
         .attr('text-anchor', 'middle')
         .attr('x', $('#hdx-3W-who').width()/2)
-        .attr('y', 400)
+        .attr('y', 520)
         .text('Activities');
 
     var g = d3.selectAll('#hdx-3W-what').select('svg').append('g');
@@ -138,8 +119,17 @@ function generate3WComponent(config,data,geom){
         .attr('class', 'x-axis-label')
         .attr('text-anchor', 'middle')
         .attr('x', $('#hdx-3W-what').width()/2)
-        .attr('y', 400)
-        .text('Activities');  
+        .attr('y', 250)
+        .text('Activities');
+
+    var g = d3.selectAll('#hdx-3W-status').select('svg').append('g');
+
+    g.append('text')
+        .attr('class', 'x-axis-label')
+        .attr('text-anchor', 'middle')
+        .attr('x', $('#hdx-3W-status').width()/2)
+        .attr('y', 160)
+        .text('Activities'); 
 
 }
 

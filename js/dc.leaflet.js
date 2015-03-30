@@ -604,14 +604,19 @@ dc.leafletChoroplethChart = function (parent, chartGroup) {
     var _featureOptions = {
         'fillColor': 'black',
         'color': 'gray',
-        'opacity': 0.4,
-        'fillOpacity': 0.6,
+        'opacity':0,
+        'fillOpacity': 0,
         'weight': 1
     };
 
     var _featureKey = function (feature) {
         return feature.key;
     };
+    
+    function isSelectedGeo(d) {
+        console.log(_chart.hasFilter(d.key));
+        return _chart.hasFilter(d.key);
+    }    
 
     var _featureStyle = function (feature) {
         var options = _chart.featureOptions();
@@ -621,11 +626,22 @@ dc.leafletChoroplethChart = function (parent, chartGroup) {
         options = JSON.parse(JSON.stringify(options));
         var v = _dataMap[_chart.featureKeyAccessor()(feature)];
         if (v && v.d) {
-            options.fillColor = _chart.getColor(v.d, v.i);
-            if (_chart.filters().indexOf(v.d.key) !== -1) {
+            console.log(v.d);
+            if (_chart.hasFilter()) {
+                if (isSelectedGeo(v.d)) {
+                    options.fillColor = _chart.getColor(v.d.value, v.i);
+                    options.opacity = 0.8;
+                    options.fillOpacity = 1;                                
+                } else {
+                    options.fillColor = _chart.getColor(0, v.i);
+                    options.opacity = 0.8;
+                    options.fillOpacity = 1;                                
+                }
+            } else {
+                options.fillColor = _chart.getColor(v.d.value, v.i);
                 options.opacity = 0.8;
-                options.fillOpacity = 1;
-            }
+                options.fillOpacity = 1;                 
+            }           
         }
         return options;
     };
