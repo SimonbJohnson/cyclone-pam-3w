@@ -10,8 +10,8 @@ dc.leafletChart = function (_chart) {
     var _defaultZoom = false;
 
     var _tiles = function (map) {
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
     };
 
@@ -26,7 +26,6 @@ dc.leafletChart = function (_chart) {
 
         return _chart._doRedraw();
     };
-
 
     _chart._postRender = function () {
         //abstract
