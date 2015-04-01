@@ -2,7 +2,7 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Click the graphs or map to interact.<br />Date: 25/03/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>MapAction</a></p>",
+    description:"<p>Click the graphs or map to interact.<br />Date: 01/04/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>Vanuatu Humanitarian Team</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
@@ -100,8 +100,8 @@ function generate3WComponent(config,data,geom){
             })           
             .featureKeyAccessor(function(feature){
                 return feature.properties[config.joinAttribute];
-            });                    
-
+            });
+                                
     dc.renderAll();
     
     var g = d3.selectAll('#hdx-3W-who').select('svg').append('g');
