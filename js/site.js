@@ -2,7 +2,7 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Click the graphs or map to interact.<br />Date: 15/04/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://docs.google.com/spreadsheets/d/1LzBqy_jH7XpKFket3iZIFtPrt04jnnF76Y0t_rBL53w/edit?usp=sharing' target='_blank'>Vanuatu Humanitarian Team</a></p>",
+    description:"<p>Click the graphs or map to interact.<br />Date: 23/04/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://data.hdx.rwlabs.org/dataset/who-is-doing-what-where-in-vanuatu-tropical-cyclone-pam' target='_blank'>Vanuatu Humanitarian Team</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
@@ -152,10 +152,12 @@ var geomCall = $.ajax({
 //when both ready construct 3W
 
 $.when(dataCall, geomCall).then(function(dataArgs, geomArgs){
+    console.log(config.data);
     var geom = geomArgs[0];
     geom.features.forEach(function(e){
         e.properties[config.joinAttribute] = String(e.properties[config.joinAttribute]); 
     });
+    console.log(dataArgs);
     generate3WComponent(config,dataArgs[0],geom);
 });
 
