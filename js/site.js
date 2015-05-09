@@ -2,7 +2,7 @@
 
 var config = {
     title:"Vanuatu Cyclone Pam 3W",
-    description:"<p>Click the graphs or map to interact.<br />Date: 30/04/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://data.hdx.rwlabs.org/dataset/who-is-doing-what-where-in-vanuatu-tropical-cyclone-pam' target='_blank'>Vanuatu Humanitarian Team</a></p>",
+    description:"<p>Click the graphs or map to interact.<br />Date: 07/05/2015 - Contact: <a href='https://twitter.com/Simon_B_Johnson' target='_blank'>Simon Johnson</a><br />Source: <a href='https://data.hdx.rwlabs.org/dataset/who-is-doing-what-where-in-vanuatu-tropical-cyclone-pam' target='_blank'>Vanuatu Humanitarian Team</a></p>",
     data:"data/data.json",
     whoFieldName:"organisation",
     whatFieldName:"activity",
